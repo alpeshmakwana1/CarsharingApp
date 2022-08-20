@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "87297107924",
+    "project_id": "carsharingapp-b3a66",
+    "storage_bucket": "carsharingapp-b3a66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87297107924:android:31e1d110bd2b505142d841",
+        "android_client_info": {
+          "package_name": "com.alpesh.carsharingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87297107924-7ocap20155euhj6ngi1hndlht2j7uvtd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATq5l7ytqnPVHOYUnS8u93sidE4iMGDxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87297107924-7ocap20155euhj6ngi1hndlht2j7uvtd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
