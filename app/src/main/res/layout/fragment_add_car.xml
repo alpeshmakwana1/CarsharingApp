@@ -34,14 +34,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Capacity"
-            android:text="@={`` + car.capacity}" />
+            android:text="@={car.capacity}" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtAvailableSeats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Available Seats"
-            android:text="@={`` + car.availableSeats}" />
+            android:text="@={car.availableSeats}" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtSourceStation"

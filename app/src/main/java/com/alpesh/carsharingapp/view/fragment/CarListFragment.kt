@@ -6,9 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alpesh.carsharingapp.R
 import com.alpesh.carsharingapp.databinding.FragmentCarListBinding
+import com.alpesh.carsharingapp.view.adapter.CarListAdapter
 import com.alpesh.carsharingapp.viewmodel.CarViewModel
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,17 +29,18 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 @AndroidEntryPoint
-class CarListFragment : Fragment() {
+class CarListFragment : Fragment(), CarListAdapter.OnCarSelectedListener {
 //    // TODO: Rename and change types of parameters
 //    private var param1: String? = null
 //    private var param2: String? = null
 
     private var _binding: FragmentCarListBinding? = null
-    private val carViewModel:CarViewModel by viewModels()
+    private val carViewModel: CarViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var carListAdapter: CarListAdapter
 
 //    companion object {
 //        /**
@@ -73,10 +81,51 @@ class CarListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val query = Firebase.firestore.collection("cars").limit(50)
+
+        carListAdapter = object: CarListAdapter(query, this@CarListFragment) {
+            override fun onDataChanged() {
+                // Show/hide content if the query returns empty.
+                if (itemCount == 0) {
+                    binding.rvCarList.visibility = View.GONE
+                    binding.txtEmptyList.visibility = View.VISIBLE
+                } else {
+                    binding.rvCarList.visibility = View.VISIBLE
+                    binding.txtEmptyList.visibility = View.GONE
+                }
+            }
+
+            override fun onError(e: FirebaseFirestoreException) {
+                // Show a snackbar on errors
+                Snackbar.make(
+                    binding.root,
+                    "Error: while loading data.", Snackbar.LENGTH_LONG
+                ).show()
+            }
+
+        }
+
+        binding.rvCarList.layoutManager = LinearLayoutManager(context)
+        binding.rvCarList.adapter = carListAdapter
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onStart() {
+        super.onStart()
+        carListAdapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        carListAdapter.stopListening()
+    }
+
+    override fun onCarSelected(car: DocumentSnapshot) {
+        TODO("Not yet implemented")
     }
 }

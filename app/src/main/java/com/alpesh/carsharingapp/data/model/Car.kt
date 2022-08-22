@@ -6,8 +6,8 @@ data class Car(
     var carId: String?,
     var carNumber: String,
     var carModel: String,
-    var capacity: Int,
-    var availableSeats: Int,
+    var capacity: String,
+    var availableSeats: String,
     var sourceStation: String,
     var destinationStation: String,
     var addedBy: String = MyApplication.loginUser.getUserId()
@@ -28,15 +28,17 @@ data class Car(
         return hashMap;
     }
 
-    fun toObject(hashMap: HashMap<String, String>): Car {
-        return Car(
-            hashMap.getOrElse("carId") { "" },
-            hashMap.getOrElse("carNumber") { "" },
-            hashMap.getOrElse("carModel") { "" },
-            hashMap.getOrDefault("capacity", { 0 }) as Int,
-            hashMap.getOrDefault("availableSeats", { 0 }) as Int,
-            hashMap.getOrElse("sourceStation") { "" },
-            hashMap.getOrElse("destinationStation") { "" }
-        );
+    companion object {
+        fun toObject(hashMap: MutableMap<String, Any>): Car {
+            return Car(
+                hashMap.getOrElse("carId") { "" }.toString(),
+                hashMap.getOrElse("carNumber") { "" }.toString(),
+                hashMap.getOrElse("carModel") { "" }.toString(),
+                hashMap.getOrElse("capacity") { 0 }.toString(),
+                hashMap.getOrElse("availableSeats") { 0 }.toString(),
+                hashMap.getOrElse("sourceStation") { "" }.toString(),
+                hashMap.getOrElse("destinationStation") { "" }.toString()
+            );
+        }
     }
 }

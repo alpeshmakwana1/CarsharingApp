@@ -43,6 +43,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.edtEmailId.setText("alpesh.devit@gmail.com")
+        binding.edtPassword.setText("123")
+
         binding.btnRegister.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
         }

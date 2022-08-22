@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="List item"/>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</LinearLayout>
+    <data>
+
+        <variable
+            name="car"
+            type="com.alpesh.carsharingapp.data.model.Car" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtCarModel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{car.carNumber}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toTopOf="@+id/txtCarNumber"
+            app:layout_constraintEnd_toStartOf="@id/txtAvailableSeats"
+            app:layout_constraintHorizontal_weight="8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtCarNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{car.sourceStation +` - `+car.destinationStation}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txtAvailableSeats"
+            app:layout_constraintHorizontal_weight="8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCarModel" />
+
+        <TextView
+            android:id="@+id/txtAvailableSeats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{car.availableSeats}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toEndOf="@+id/txtCarModel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
