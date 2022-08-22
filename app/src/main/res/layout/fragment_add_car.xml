@@ -3,9 +3,15 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="car"
             type="com.alpesh.carsharingapp.data.model.Car" />
+
+        <variable
+            name="isEditable"
+            type="Boolean" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,6 +29,7 @@
                 android:id="@+id/edtCarNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{isEditable}"
                 android:hint="Car number"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -37,6 +44,7 @@
                 android:id="@+id/edtCarModel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{isEditable}"
                 android:hint="Car Model"
                 android:text="@={car.carModel}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -49,6 +57,7 @@
                 android:id="@+id/edtCapacity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{isEditable}"
                 android:hint="Capacity"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -63,6 +72,7 @@
                 android:id="@+id/edtAvailableSeats"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{isEditable}"
                 android:hint="Available Seats"
                 android:text="@={car.availableSeats}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -75,6 +85,7 @@
                 android:id="@+id/edtSourceStation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{isEditable}"
                 android:hint="Source Station"
                 android:text="@={car.sourceStation}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -87,6 +98,7 @@
                 android:id="@+id/edtDestinationStation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{isEditable}"
                 android:hint="Destination Station"
                 android:text="@={car.destinationStation}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -99,6 +111,7 @@
                 android:id="@+id/edtAadharNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{isEditable}"
                 android:hint="Aadhar Number (optional)"
                 android:visibility="gone" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -107,7 +120,8 @@
             android:id="@+id/btnAddCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Car" />
+            android:text="Add Car"
+            android:visibility="@{isEditable ? View.VISIBLE : View.GONE}" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

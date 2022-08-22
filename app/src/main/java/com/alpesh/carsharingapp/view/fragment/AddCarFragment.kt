@@ -52,7 +52,14 @@ class AddCarFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAddCarBinding.inflate(inflater, container, false)
-        binding.car = Car("", "", "", "0", "0", "", "")
+        val bundle = arguments
+        if (bundle != null) {
+            binding.car = bundle.getSerializable("carData") as Car
+            binding.isEditable = bundle.getBoolean("isEditable")
+        } else {
+            binding.car = Car("", "", "", "0", "0", "", "")
+            binding.isEditable = true
+        }
         return binding.root
     }
 

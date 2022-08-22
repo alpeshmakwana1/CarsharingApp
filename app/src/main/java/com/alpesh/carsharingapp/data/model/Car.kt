@@ -1,6 +1,8 @@
 package com.alpesh.carsharingapp.data.model
 
+import android.os.Parcelable
 import com.alpesh.carsharingapp.utils.MyApplication
+import java.io.Serializable
 
 data class Car(
     var carId: String?,
@@ -11,7 +13,7 @@ data class Car(
     var sourceStation: String,
     var destinationStation: String,
     var addedBy: String = MyApplication.loginUser.getUserId()
-) : BaseModel() {
+) : BaseModel(), Serializable {
     fun toHashMap(): HashMap<String, String> {
         var hashMap = HashMap<String, String>();
 

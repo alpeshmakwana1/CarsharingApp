@@ -19,6 +19,25 @@ class CarViewModel @Inject constructor(val repo: CarRepo) : BaseViewModel() {
     val carAddingStatus: LiveData<Resource<Response>> = _carAddingStatus
 
     fun addCar(car: Car) {
+        val error = if (car.carNumber.isEmpty()) {
+            "Enter car number"
+        } else if (car.carModel.isEmpty()) {
+            "Enter car model"
+        } else if (car.capacity.isEmpty()) {
+            "Enter car capacity"
+        } else if (car.availableSeats.isEmpty()) {
+            "Enter available seats"
+        } else if (car.sourceStation.isEmpty()) {
+            "Enter Source station"
+        } else if (car.destinationStation.isEmpty()) {
+            "Enter Destination station"
+        } else null
+
+        error?.let {
+            _carAddingStatus.postValue(Resource.Error(error))
+            return
+        }
+
         _carAddingStatus.postValue(Resource.Loading())
 
         viewModelScope.launch {

@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alpesh.carsharingapp.R
+import com.alpesh.carsharingapp.data.model.Car
 import com.alpesh.carsharingapp.databinding.FragmentCarListBinding
 import com.alpesh.carsharingapp.view.adapter.CarListAdapter
 import com.alpesh.carsharingapp.viewmodel.CarViewModel
@@ -132,6 +136,10 @@ class CarListFragment : Fragment(), CarListAdapter.OnCarSelectedListener {
     }
 
     override fun onCarSelected(car: DocumentSnapshot) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putSerializable("carData", Car.toObject(car.data!!))
+        bundle.putBoolean("isEditable", false)
+        findNavController().navigate(R.id.action_CarListFragment_to_AddCarFragment, bundle)
+//        Toast.makeText(context, car.data.toString(), Toast.LENGTH_SHORT).show()
     }
 }
