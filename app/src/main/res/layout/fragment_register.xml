@@ -12,36 +12,50 @@
             android:id="@+id/edtFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:lines="1"
             android:hint="First Name" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:lines="1"
             android:hint="Last Name" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtMobileNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:imeOptions="actionNext"
             android:hint="Mobile No" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmailId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
             android:hint="Email Id" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtAadharNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
+            android:imeOptions="actionNext"
             android:hint="Aadhar Number (optional)" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
             android:hint="Password" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -49,6 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
             android:visibility="gone" />
 
         <Button

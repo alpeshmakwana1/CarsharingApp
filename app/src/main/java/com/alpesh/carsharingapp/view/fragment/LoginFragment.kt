@@ -68,6 +68,7 @@ class LoginFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     startActivity(Intent(activity, MainActivity::class.java))
+                    activity?.finish()
                 }
                 is Resource.Error -> {
                     Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()

@@ -17,11 +17,12 @@
             android:id="@+id/txtCarModel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:lines="1"
             android:text="@{car.carNumber}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toTopOf="@+id/txtCarNumber"
             app:layout_constraintEnd_toStartOf="@id/txtAvailableSeats"
-            app:layout_constraintHorizontal_weight="8"
+            app:layout_constraintHorizontal_weight="9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,11 +30,12 @@
             android:id="@+id/txtCarNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{car.sourceStation +` - `+car.destinationStation}"
+            android:lines="1"
+            android:text="@{car.carModel}"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/txtAvailableSeats"
-            app:layout_constraintHorizontal_weight="8"
+            app:layout_constraintHorizontal_weight="9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCarModel" />
 
@@ -41,11 +43,13 @@
             android:id="@+id/txtAvailableSeats"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lines="1"
             android:text="@{car.availableSeats}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toEndOf="@+id/txtCarModel"
             app:layout_constraintTop_toTopOf="parent" />
 

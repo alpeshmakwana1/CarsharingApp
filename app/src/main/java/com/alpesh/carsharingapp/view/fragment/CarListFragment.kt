@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alpesh.carsharingapp.R
 import com.alpesh.carsharingapp.databinding.FragmentCarListBinding
@@ -84,7 +85,7 @@ class CarListFragment : Fragment(), CarListAdapter.OnCarSelectedListener {
 
         val query = Firebase.firestore.collection("cars").limit(50)
 
-        carListAdapter = object: CarListAdapter(query, this@CarListFragment) {
+        carListAdapter = object : CarListAdapter(query, this@CarListFragment) {
             override fun onDataChanged() {
                 // Show/hide content if the query returns empty.
                 if (itemCount == 0) {
@@ -105,7 +106,12 @@ class CarListFragment : Fragment(), CarListAdapter.OnCarSelectedListener {
             }
 
         }
-
+        binding.rvCarList.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false).orientation
+            )
+        )
         binding.rvCarList.layoutManager = LinearLayoutManager(context)
         binding.rvCarList.adapter = carListAdapter
     }

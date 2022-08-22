@@ -9,6 +9,42 @@
         android:orientation="vertical"
         tools:context=".view.fragment.CarListFragment">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSourceStation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/tilDestinationStation"
+            app:layout_constraintHorizontal_weight="4.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/actxtSourceStation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Source Station" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDestinationStation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="4.5"
+            app:layout_constraintStart_toEndOf="@+id/tilSourceStation"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/actxtDestiantion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Distination Station" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:id="@+id/txtEmptyList"
             android:layout_width="match_parent"
@@ -20,7 +56,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/tilSourceStation" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCarList"
@@ -29,7 +65,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilSourceStation"
             tools:listitem="@layout/car_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
