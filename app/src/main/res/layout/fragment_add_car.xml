@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragment.AddCarFragment">
+<layout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="car"
+            type="com.alpesh.carsharingapp.data.model.Car" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:context=".view.fragment.AddCarFragment">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCarNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car number"
+            android:text="@={car.carNumber}" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCarModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Model"
+            android:text="@={car.carModel}" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCapacity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Capacity"
+            android:text="@={`` + car.capacity}" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtAvailableSeats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Available Seats"
+            android:text="@={`` + car.availableSeats}" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtSourceStation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Source Station"
+            android:text="@={car.sourceStation}" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtDestinationStation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Destination Station"
+            android:text="@={car.destinationStation}" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtAadharNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Aadhar Number (optional)"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnAddCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Car" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

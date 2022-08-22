@@ -1,13 +1,16 @@
 package com.alpesh.carsharingapp.data.model
 
+import com.alpesh.carsharingapp.utils.MyApplication
+
 data class Car(
-    private val carId: String?,
-    private val carNumber: String,
-    private val carModel: String,
-    private val capacity: Int,
-    private val availableSeats: Int,
-    private val sourceStation: String,
-    private val destinationStation: String
+    var carId: String?,
+    var carNumber: String,
+    var carModel: String,
+    var capacity: Int,
+    var availableSeats: Int,
+    var sourceStation: String,
+    var destinationStation: String,
+    var addedBy: String = MyApplication.loginUser.getUserId()
 ) : BaseModel() {
     fun toHashMap(): HashMap<String, String> {
         var hashMap = HashMap<String, String>();
@@ -19,6 +22,7 @@ data class Car(
             put("availableSeats", availableSeats.toString())
             put("sourceStation", sourceStation)
             put("destinationStation", destinationStation)
+            put("addedBy", addedBy)
         }
 
         return hashMap;

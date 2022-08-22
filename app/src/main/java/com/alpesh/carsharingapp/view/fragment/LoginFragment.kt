@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.alpesh.carsharingapp.R
 import com.alpesh.carsharingapp.databinding.FragmentLoginBinding
+import com.alpesh.carsharingapp.utils.Resource
 import com.alpesh.carsharingapp.view.activity.MainActivity
 import com.alpesh.carsharingapp.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,23 +44,34 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
         }
         binding.btnLogin.setOnClickListener {
-            val response = loginViewModel.checkLogin(
+            loginViewModel.checkLogin(
                 binding.edtEmailId.text.toString(),
                 binding.edtPassword.text.toString()
             )
-            if (response.code == 200) {
-                //TODO Sucees Flow
-                Toast.makeText(activity, response.message, Toast.LENGTH_SHORT).show()
-                startActivity(Intent(activity,MainActivity::class.java))
-            } else {
-                //TODO Failure Flow
-                startActivity(Intent(activity,MainActivity::class.java))
-                Toast.makeText(activity, response.message, Toast.LENGTH_SHORT).show()
-            }
         }
+
+        loginViewModel.userLoginStatus.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Loading -> {
+                    //TODO Need to implement Progressbar
+                }
+                is Resource.Success -> {
+                    Toast.makeText(
+                        activity,
+                        it.data?.message ?: "User Login successful",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    startActivity(Intent(activity, MainActivity::class.java))
+                }
+                is Resource.Error -> {
+                    Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
     }
 
     override fun onDestroyView() {

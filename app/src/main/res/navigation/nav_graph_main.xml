@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/CarListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.alpesh.carsharingapp.view.fragment.LoginFragment"
-        android:label="@string/login_fragment_label"
-        tools:layout="@layout/fragment_login">
+        android:id="@+id/CarListFragment"
+        android:name="com.alpesh.carsharingapp.view.fragment.CarListFragment"
+        android:label="@string/car_list"
+        tools:layout="@layout/fragment_car_list">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_CarListFragment_to_AddCarFragment"
+            app:destination="@id/AddCarFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.alpesh.carsharingapp.view.fragment.RegisterFragment"
-        android:label="@string/register_fragment_label"
-        tools:layout="@layout/fragment_register">
+        android:id="@+id/AddCarFragment"
+        android:name="com.alpesh.carsharingapp.view.fragment.AddCarFragment"
+        android:label="@string/add_car"
+        tools:layout="@layout/fragment_add_car">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_AddCarFragment_to_CarListFragment"
+            app:destination="@id/CarListFragment" />
     </fragment>
 </navigation>

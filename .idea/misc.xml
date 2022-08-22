@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/activity_login.xml" value="0.2421875" />
+        <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/car_list_item.xml" value="0.228125" />
+        <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/content_login.xml" value="0.2421875" />
         <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/content_main.xml" value="0.228125" />
+        <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/fragment_add_car.xml" value="0.2421875" />
+        <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/fragment_car_list.xml" value="0.2421875" />
         <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/fragment_first.xml" value="0.2421875" />
         <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/fragment_login.xml" value="0.18432971014492755" />
         <entry key="..\:/Alpesh/Projects/AndroidWS/CarsharingApp/app/src/main/res/layout/fragment_register.xml" value="0.2421875" />
